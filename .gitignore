@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+docs\mack-house-application-current.pdf
+docs\consent-form.pdf
+docs\application-current.pdf
+docs\reference\*
+docs\handbook\*

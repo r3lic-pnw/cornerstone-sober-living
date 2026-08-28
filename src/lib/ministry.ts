@@ -9,12 +9,15 @@
 export const ministry = {
   name: "Cornerstone Sober Living",
 
-  /** notes.md Q23 — still unanswered. The site badly needs this. */
-  phone: null as string | null,
+  /**
+   * Jeff Morlan's line. notes.md Q23/Q9 — he is the housing coordinator,
+   * so this is both the general number and the one a case manager wants.
+   */
+  phone: "425-344-3231" as string | null,
 
   /**
-   * notes.md G33 — Ed owns a Cornerstone domain but it isn't set up yet.
-   * This is the address that works today.
+   * notes.md G33 — cornerstonesoberliving.org is secured, but no mail is
+   * set up on it yet and the decision is to stay on this address for now.
    */
   email: "hgrm7@outlook.com",
 

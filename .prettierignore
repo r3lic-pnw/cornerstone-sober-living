@@ -1,0 +1,3 @@
+# Prettier renumbers ordered lists, which destroys the stable question
+# numbers that code comments and PLAN.md cite. Leave these alone.
+docs/

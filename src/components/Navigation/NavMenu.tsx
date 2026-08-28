@@ -25,16 +25,16 @@ export default function NavMenu() {
         aria-label="Toggle navigation menu"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Menu />
+        <Menu className="text-accent" />
       </button>
       <nav
-        className={`${isOpen ? "block" : "hidden"} absolute right-0 top-full z-10 border border-foreground`}
+        className={`${isOpen ? "block" : "hidden"} absolute right-0 top-full z-10 border border-border shadow-lg`}
       >
         {navItems.map((item, i) => (
           <Link
             key={i}
             href={item.href}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600"
+            className="block px-4 py-2 text-sm text-body-text bg-surface hover:bg-surface-sunken"
             onClick={() => setIsOpen(false)}
           >
             {item.name}

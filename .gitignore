@@ -39,8 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-docs\mack-house-application-current.pdf
-docs\consent-form.pdf
-docs\application-current.pdf
-docs\reference\*
-docs\handbook\*
+
+# Working docs stay local. This repo is public, and docs/ holds unpublished
+# facts about real people — notably whether Pastor Ed's own history can be
+# named, which is his to decide and hasn't been decided yet.
+# (Forward slashes only; a backslash is an escape character here.)
+docs/

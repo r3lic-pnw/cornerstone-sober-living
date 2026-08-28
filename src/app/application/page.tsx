@@ -57,8 +57,9 @@ export default function Application() {
               >
                 Reentry Housing Assistance Program
               </a>
-              , and it can cover your program fees. A lot of the men here came
-              in on one.
+              . It pays up to $700 a month for up to six months, which covers
+              the program fee at either room type. A lot of the men here came in
+              on one.
             </p>
             {/* The ministry has no part in the voucher process — don't offer
                 help here we can't actually give. notes.md A38. */}

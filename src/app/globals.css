@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================================================
+   Cornerstone Sober Living — design tokens
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+   Two brand colors come from the logo. Everything else is derived from them.
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+     Navy  #082857  the cube / the foundation  → structure, headings, bands
+     Gold  #FFCC00  the cross                  → accent, CTAs, rules, marks
+
+   Rule of thumb: navy carries the page, gold is the highlight. If gold is
+   doing more than ~10% of the surface area, it has stopped being an accent.
+
+   Contrast: every text pairing below is >= 4.5:1 (WCAG AA). Ratios are noted
+   inline. #FFCC00 is 1.45:1 on the page background — it is NEVER text on a
+   light surface. Use --color-accent-ink for gold-colored text.
+
+   The ramps carry only the steps in use. Adding one is deliberate: pick it
+   off the same hue and write its contrast ratio next to it.
+   ========================================================================== */
+
+@theme {
+  /* ---- Ramps (raw values; prefer the semantic tokens below in markup) ---- */
+
+  /* Navy — hue anchored on the logo at 700 */
+  --color-navy-50: #f0f4fa;
+  --color-navy-200: #b8cae4;
+  --color-navy-500: #2b5090;
+  --color-navy-600: #143c73;
+  --color-navy-700: #082857; /* BRAND */
+  --color-navy-900: #04142c;
+
+  /* Gold — hue anchored on the logo at 400 */
+  --color-gold-50: #fff9e5;
+  --color-gold-300: #ffd940;
+  --color-gold-400: #ffcc00; /* BRAND */
+  --color-gold-500: #e0b000;
+  --color-gold-700: #8a6800; /* darkest gold usable as text on light */
+
+  /* Sand — warm neutrals. Warm, not gray: keeps the gold from reading acidic */
+  --color-sand-50: #fbfaf8;
+  --color-sand-200: #f2eee6;
+  --color-sand-300: #e3ded4;
+  --color-sand-500: #8f8778;
+
+  /* Ink — near-black, tinted toward navy so text feels part of the brand */
+  --color-ink: #14192b;
+  --color-ink-muted: #55607a;
+
+  /* ---- Semantic tokens (use these) ---- */
+
+  /* Surfaces — page rhythm is background → surface-sunken → surface-navy */
+  --color-background: var(--color-sand-50); /* page */
+  --color-surface: #ffffff; /* cards, panels, inputs */
+  --color-surface-sunken: var(--color-sand-200); /* alternating bands, wells */
+  --color-surface-navy: var(--color-navy-700); /* full-bleed dark bands */
+  --color-surface-gold: var(--color-gold-50); /* scripture / callout blocks */
+
+  /* Text on light surfaces */
+  --color-body-text: var(--color-ink); /* 16.7:1 on background */
+  --color-muted-text: var(--color-ink-muted); /*  6.0:1 */
+  --color-heading: var(--color-navy-700); /* 13.9:1 */
+  --color-accent-ink: var(--color-gold-700); /*  5.0:1 — gold-colored TEXT */
+
+  /* Text on the navy band */
+  --color-on-navy: #ffffff; /* 14.5:1 on navy-700 */
+  --color-on-navy-muted: var(--color-navy-200); /*  8.7:1 */
+  --color-on-navy-accent: var(--color-gold-300); /* 10.5:1 */
+
+  /* Accent + interaction */
+  --color-accent: var(--color-gold-400); /* graphic accent, CTA fill */
+  --color-accent-hover: var(--color-gold-500);
+  --color-on-accent: var(--color-navy-900); /* 12.2:1 on gold-400 */
+  --color-focus: var(--color-navy-600);
+
+  /* Lines */
+  --color-border: var(--color-sand-300); /* decorative dividers */
+  --color-border-strong: var(--color-sand-500); /* input outlines, 3.4:1 */
+  --color-border-on-navy: var(--color-navy-500);
+
+  /* Status */
+  --color-error: #a32219; /* 7.2:1 */
+
+  /* Type
+     Body is the native system sans — no webfont download for the bulk of the
+     page, which matters on a slow connection or an old phone. Headings are
+     the one loaded face, set in layout.tsx as --font-brand-serif. */
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-brand-serif, ui-serif), Georgia, serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-body-text);
+  font-family: var(--font-sans);
+}
+
+/* One visible focus style everywhere. Applicants will be filling in forms and
+   some of them will be on a keyboard, a screen reader, or a borrowed phone. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* On navy the navy focus ring disappears — flip it to gold. */
+.on-navy :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline-color: var(--color-gold-300);
 }

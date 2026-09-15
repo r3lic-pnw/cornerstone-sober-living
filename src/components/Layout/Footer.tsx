@@ -22,9 +22,10 @@ export default function Footer() {
               </a>
             </p>
           ) : (
-            /* TODO(pastor): phone number — notes.md Q23. The site needs this. */
+            /* Guard only — the number is confirmed and set in ministry.ts.
+               If it is ever cleared, fail loudly rather than silently. */
             <p className="text-error bg-surface font-semibold px-2 py-1 inline-block rounded">
-              TODO: phone number (notes.md Q23)
+              TODO: phone number
             </p>
           )}
           <p>

@@ -71,6 +71,7 @@
   --color-accent: var(--color-gold-400); /* graphic accent, CTA fill */
   --color-accent-hover: var(--color-gold-500);
   --color-on-accent: var(--color-navy-900); /* 12.2:1 on gold-400 */
+  --color-link: var(--color-navy-600); /* 10.5:1 on background, 10.5:1 on gold-50 */
   --color-focus: var(--color-navy-600);
 
   /* Lines */

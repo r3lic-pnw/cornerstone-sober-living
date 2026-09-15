@@ -23,6 +23,7 @@ export default function NavMenu() {
         type="button"
         aria-expanded={isOpen}
         aria-label="Toggle navigation menu"
+        className="inline-flex items-center justify-center min-w-11 min-h-11 rounded hover:bg-navy-600"
         onClick={() => setIsOpen(!isOpen)}
       >
         <Menu className="text-accent" />
@@ -34,7 +35,7 @@ export default function NavMenu() {
           <Link
             key={i}
             href={item.href}
-            className="block px-4 py-2 text-sm text-body-text bg-surface hover:bg-surface-sunken"
+            className="flex items-center min-h-11 px-4 text-sm text-body-text bg-surface hover:bg-surface-sunken"
             onClick={() => setIsOpen(false)}
           >
             {item.name}

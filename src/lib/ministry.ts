@@ -1,51 +1,59 @@
 /**
  * Every real-world fact about the ministry that appears on more than one page.
  *
- * Anything still unconfirmed is marked TODO and cites the question number in
- * notes.md. Swap the value here and it updates everywhere — do not inline
+ * Anything still unconfirmed is marked TODO and cites the open question number
+ * in notes.md. Swap the value here and it updates everywhere — do not inline
  * these into pages.
  */
+
+/**
+ * cornerstonesoberliving.org, secured by Jeff. Used for metadataBase, the
+ * sitemap, and robots.txt. Nothing is deployed to it yet.
+ */
+export const siteUrl = "https://cornerstonesoberliving.org";
+
+/**
+ * The live Jotform application — now the primary way a man applies. Linked to
+ * rather than embedded: an iframe would be heavy on the old phones and library
+ * terminals this page is written for, and Jotform's own page is already
+ * mobile-friendly. Paper remains the fallback for anyone who can't use it.
+ */
+export const applicationFormUrl = "https://form.jotform.com/262392776348167";
 
 export const ministry = {
   name: "Cornerstone Sober Living",
 
   /**
-   * Jeff Morlan's line. notes.md Q23/Q9 — he is the housing coordinator,
-   * so this is both the general number and the one a case manager wants.
+   * The number on the current application packet. The site used to carry
+   * 425-344-3231, which meant the two documents disagreed — a man holding the
+   * paper form and looking at the site saw two numbers. Confirmed correct.
    */
-  phone: "425-344-3231" as string | null,
+  phone: "360-435-3973" as string | null,
 
   /**
-   * notes.md G33 — cornerstonesoberliving.org is secured, but no mail is
-   * set up on it yet and the decision is to stay on this address for now.
+   * Confirmed as the address to publish, in preference to the
+   * hgrm7@outlook.com the older packet carries. The domain is secured but has
+   * no mail on it; if that changes, this is the one line to swap.
    */
-  email: "hgrm7@outlook.com",
+  email: "edrichardson19720@gmail.com",
 
-  /** The intake house. notes.md D34 — cleared for publication. */
+  /** Pastor Ed's House — cleared for publication. */
   mailingAddress: {
-    street: "18816 Smokey Point Blvd",
+    street: "26015 48th Ave NE",
     city: "Arlington",
     state: "WA",
     zip: "98223",
   },
 
-  /** notes.md Q16/Q17 — area only, no per-house addresses, no house count. */
-  serviceArea: "Marysville and Arlington, in Snohomish County",
+  /** Area only, no per-house addresses, no house count — a count goes stale. */
+  serviceArea: "Serving Snohomish County",
 
-  /** notes.md Q6 */
+  /** Reads every application, with the final say from Pastor Ed. */
   housingCoordinator: "Jeff Morlan",
 
   /**
-   * notes.md Q41. Payments used to go to Holy Ghost Revival Ministries or
-   * Holy Ghost Housing depending on the house, and the two names got confused.
-   * Holy Ghost Housing was renamed to Cornerstone Sober Living to fix that, so
-   * this is now the only payee — state it wherever money is mentioned.
-   */
-  payee: "Cornerstone Sober Living",
-
-  /**
-   * notes.md Q26 — verified against the IRS Tax Exempt Organization Search
-   * on 2026-08-26 (record saved at docs/reference/). On the Publication 78
+   * Verified against the IRS Tax Exempt Organization Search on 2026-08-26
+   * (record saved at docs/reference/). On the Publication 78
    * list, deductibility code PC (public charity), favorable determination
    * letter dated 2022-09-13. Currently listed on Pub 78 is the meaningful
    * check: auto-revoked organizations are removed from it.
@@ -62,7 +70,7 @@ export const telHref = ministry.phone
   ? `tel:${ministry.phone.replace(/[^\d+]/g, "")}`
   : null;
 
-/** Program fees. notes.md Q2 — exact, per the current rate. */
+/** Program fees — exact, per the current confirmed rate. */
 export const fees = {
   maintenanceFee: 250,
   rooms: [

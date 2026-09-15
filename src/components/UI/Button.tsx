@@ -3,7 +3,7 @@ import Link from "next/link";
 type Variant = "primary" | "outline" | "on-navy";
 
 const base =
-  "inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 " +
+  "inline-flex items-center justify-center gap-2 min-h-11 px-6 py-3 " +
   "rounded-md font-semibold text-base transition-colors";
 
 const variants: Record<Variant, string> = {
@@ -17,23 +17,37 @@ export default function Button({
   href,
   variant = "primary",
   download,
+  target,
   className = "",
   children,
 }: {
   href: string;
   variant?: Variant;
   download?: boolean;
+  target?: "_blank";
   className?: string;
   children: React.ReactNode;
 }) {
   const cls = `${base} ${variants[variant]} ${className}`;
+  const newTab = target === "_blank";
 
   // tel:, mailto: and file downloads are real navigations — <Link> would only
-  // add client-router overhead for them.
-  if (download || /^(tel:|mailto:|https?:)/.test(href)) {
+  // add client-router overhead for them. So is anything opening in a new tab.
+  if (download || newTab || /^(tel:|mailto:|https?:)/.test(href)) {
     return (
-      <a href={href} download={download} className={cls}>
+      <a
+        href={href}
+        download={download}
+        target={target}
+        // Keeps the new tab from reaching back into this one, and stops the
+        // referrer going out with it.
+        rel={newTab ? "noopener noreferrer" : undefined}
+        className={cls}
+      >
         {children}
+        {/* Announced to screen readers only — a new tab breaks the back
+            button, and someone who can't see it happen has no other warning. */}
+        {newTab && <span className="sr-only"> (opens in a new tab)</span>}
       </a>
     );
   }

@@ -40,6 +40,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Agent skills installed locally via `npx skills add`. Machine-specific —
+# .claude/ is a symlink into .agents/, which doesn't survive a clone on
+# another OS.
+/.agents/
+/.claude/
+/skills-lock.json
+
 # Working docs stay local. This repo is public, and docs/ holds unpublished
 # facts about real people — notably whether Pastor Ed's own history can be
 # named, which is his to decide and hasn't been decided yet.

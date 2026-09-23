@@ -37,9 +37,9 @@ export const ministry = {
    */
   email: "edrichardson19720@gmail.com",
 
-  /** Pastor Ed's House — cleared for publication. */
+  /** Intake House — cleared for publication. */
   mailingAddress: {
-    street: "26015 48th Ave NE",
+    street: "18816 Smokey Point Blvd",
     city: "Arlington",
     state: "WA",
     zip: "98223",

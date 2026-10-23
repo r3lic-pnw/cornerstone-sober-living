@@ -35,9 +35,9 @@ export const ministry = {
    * hgrm7@outlook.com the older packet carries. The domain is secured but has
    * no mail on it; if that changes, this is the one line to swap.
    */
-  email: "edrichardson19720@gmail.com",
+  email: "edrichardson1972@gmail.com",
 
-  /** Intake House — cleared for publication. */
+  /** Intake House */
   mailingAddress: {
     street: "18816 Smokey Point Blvd",
     city: "Arlington",

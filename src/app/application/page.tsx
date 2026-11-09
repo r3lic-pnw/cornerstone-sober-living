@@ -11,9 +11,10 @@ import {
 } from "@/lib/ministry";
 
 export const metadata: Metadata = {
-  title: "Apply",
+  title: "Apply for Sober Housing for Men",
   description:
     "Apply for housing with Cornerstone Sober Living. No interview — the application is the whole process, and you'll hear back within about a week.",
+  alternates: { canonical: "/application" },
 };
 
 // const address = ministry.mailingAddress;

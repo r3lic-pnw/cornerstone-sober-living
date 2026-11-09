@@ -86,7 +86,7 @@ export default function Image() {
             marginTop: 24,
           }}
         >
-          {ministry.serviceArea}
+          Serving {ministry.serviceArea}, {ministry.state}
         </div>
       </div>
     ),

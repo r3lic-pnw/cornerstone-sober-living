@@ -4,9 +4,10 @@ import Button from "@/components/UI/Button";
 import { mailtoHref, ministry, telHref } from "@/lib/ministry";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Us",
   description:
     "Call or write to Cornerstone Sober Living about housing, referrals, or how to help. Sober housing for men in Snohomish County, Washington.",
+  alternates: { canonical: "/contact" },
 };
 
 const address = ministry.mailingAddress;
@@ -89,7 +90,7 @@ export default function Contact() {
         <div className="max-w-3xl mx-auto px-6 py-12">
           <h2 className="font-serif text-3xl font-bold">Where we are</h2>
           <p className="mt-6 text-lg">
-            Our houses are in {ministry.serviceArea}.
+            Our houses are in {ministry.serviceArea}, {ministry.state}.
           </p>
           {/* Service area only. No per-house addresses, and no house count,
               which would go stale. */}

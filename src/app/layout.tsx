@@ -5,7 +5,7 @@ import "./globals.css";
 import { Home } from "lucide-react";
 import NavMenu from "@/components/Navigation/NavMenu";
 import Footer from "@/components/Layout/Footer";
-import { siteUrl } from "@/lib/ministry";
+import { ministry, siteUrl } from "@/lib/ministry";
 
 /* Heading face for the whole site. globals.css reads --font-brand-serif
    through --font-serif, so every `font-serif` heading picks it up.
@@ -19,11 +19,14 @@ const brandSerif = Source_Serif_4({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Cornerstone Sober Living",
+    // The home page's title. Location is in it because that's how people
+    // search: "sober living Snohomish County", "men's sober housing WA".
+    default:
+      "Cornerstone Sober Living | Christian Sober Housing for Men in Snohomish County, WA",
     template: "%s | Cornerstone Sober Living",
   },
   description:
-    "Cornerstone Sober Living offers Christian-centered housing for men rebuilding their lives after addiction and incarceration. Built on a foundation of faith, we help you find your way to freedom.",
+    "Christian-centered sober living for men in Snohomish County, Washington, rebuilding their lives after addiction and incarceration. Apply online or call to ask a question.",
   openGraph: {
     siteName: "Cornerstone Sober Living",
     locale: "en_US",
@@ -34,6 +37,38 @@ export const metadata: Metadata = {
   // rather than as a thumbnail; X falls back to og:image when there's no
   // twitter:image.
   twitter: { card: "summary_large_image" },
+};
+
+/* Structured data for search engines: who we are, how to reach us, where we
+   serve. Built only from ministry.ts so nothing here can drift from what the
+   pages say. The mailing address is the intake house, already public on the
+   Contact page; no per-house addresses. */
+const address = ministry.mailingAddress;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: ministry.name,
+  url: siteUrl,
+  logo: `${siteUrl}/csl_logo_concept.svg`,
+  email: ministry.email,
+  ...(ministry.phone && { telephone: ministry.phone }),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: address.street,
+    addressLocality: address.city,
+    addressRegion: address.state,
+    postalCode: address.zip,
+    addressCountry: "US",
+  },
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: `${ministry.serviceArea}, ${ministry.state}`,
+  },
+  // Same guard as the footer: only claimed once verified against the IRS.
+  ...(ministry.nonprofitStatusVerified && {
+    nonprofitStatus: "Nonprofit501c3",
+    taxID: ministry.ein,
+  }),
 };
 
 export default function RootLayout({
@@ -47,6 +82,12 @@ export default function RootLayout({
           flex — as a flex child it would shrink full-bleed sections below
           their content height and collapse them. */}
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <header className="on-navy grid grid-cols-3 items-center px-4 py-2 h-16 bg-surface-navy text-on-navy sticky top-0 w-full z-20 shrink-0">
           {/* min-w/h, not padding: the 44px tap target has to hold even if the
               icon size changes. The header is h-16, so it fits. */}

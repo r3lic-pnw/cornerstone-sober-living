@@ -45,8 +45,13 @@ export const ministry = {
     zip: "98223",
   },
 
-  /** Area only, no per-house addresses, no house count — a count goes stale. */
-  serviceArea: "Serving Snohomish County",
+  /**
+   * Area only, no per-house addresses, no house count — a count goes stale.
+   * The bare place name, so each caller can frame it ("Serving …", "Our
+   * houses are in …") and the structured data can use it as areaServed.
+   */
+  serviceArea: "Snohomish County",
+  state: "Washington",
 
   /** Reads every application, with the final say from Pastor Ed. */
   housingCoordinator: "Jeff Morlan",

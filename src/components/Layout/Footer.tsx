@@ -8,7 +8,9 @@ export default function Footer() {
           <p className="font-serif text-xl font-bold text-on-navy">
             {ministry.name}
           </p>
-          <p className="mt-1">{ministry.serviceArea}</p>
+          <p className="mt-1">
+            Serving {ministry.serviceArea}, {ministry.state}
+          </p>
         </div>
 
         <div className="space-y-2">

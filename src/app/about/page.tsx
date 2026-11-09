@@ -5,9 +5,10 @@ import Button from "@/components/UI/Button";
 import { applicationFormUrl, ministry } from "@/lib/ministry";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Our Christian Sober Living Ministry",
   description:
     "Cornerstone Sober Living grew out of the Mack House, which has housed men coming out of prison in Snohomish County for more than twenty years.",
+  alternates: { canonical: "/about" },
 };
 
 export default function About() {

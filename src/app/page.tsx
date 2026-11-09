@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { Playfair } from "next/font/google";
 import Button from "@/components/UI/Button";
 import { ministry, telHref, applicationFormUrl } from "@/lib/ministry";
 
 const playfair = Playfair({ subsets: ["latin"] });
+
+// Title and description come from the root layout's defaults.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
@@ -49,8 +55,9 @@ export default function Home() {
             </footer>
           </blockquote>
           <p className="text-xl mt-8">
-            Cornerstone Sober Living offers Christian-centered housing for men
-            rebuilding their lives after addiction and incarceration. Built on a
+            Cornerstone Sober Living offers Christian-centered housing in{" "}
+            {ministry.serviceArea}, {ministry.state}, for men rebuilding their
+            lives after addiction and incarceration. Built on a
             foundation of faith, we help you find your way to freedom.
           </p>
 
